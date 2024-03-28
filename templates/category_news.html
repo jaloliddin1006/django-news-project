@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+
+
+{% block title %}
+all news categories
+{% endblock title %}
+
+
+
+{% block content %}
+<h1>all news - {{ ctg.name }}</h1>
+<ul>
+    {% for yangilik in news %}
+        <li>
+            <a href="{% url 'detail' yangilik.id %}">
+                <img src="{{ yangilik.image.url }}" alt="{{ yangilik.title }}" style="width: 300px; height: 200px;">
+               <h4>{{ yangilik.title }}</h4>
+            </a>
+               <p>{{ yangilik.subtitle }}</p>
+               <p>{{ yangilik.created_at }}</p>
+          
+            <hr>
+        </li>
+
+    {% endfor %}
+</ul>
+
+
+<h1>all categories</h1>
+<ul>
+    {% for ctg in kategoriyalar %}
+        <li>
+            <a href="{% url 'category' ctg.id %}">
+               <h4>{{ ctg.name }}</h4>
+            </a>
+          
+        </li>
+
+    {% endfor %}
+</ul>
+
+
+{% endblock content %}

@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+
+
+{% block title %}
+all news
+{% endblock title %}
+
+
+
+{% block content %}
+
+<br>
+<h1>all news</h1>
+<ul>
+    
+
+    {% for yangilik in yangiliklar %}
+
+    <div class="card mb-3">
+        <img class="card-img-top" src="{{ yangilik.image.url }}" alt="Card image cap" style="height: 400px">
+        <div class="card-body">
+            <a href="{{ yangilik.get_absolute_url }}">
+                <h5 class="card-title">{{ yangilik.title }}</h5>
+            </a>
+          <p class="card-text">{{ yangilik.subtitle }}</p>
+          <p class="card-text"><small class="text-muted">Date: {{ yangilik.created_at }} | Views: {{ yangilik.views }}</small></p>
+        </div>
+      </div>
+      {% endfor %}
+
+
+</ul>
+
+
+<h1>all categories</h1>
+<ul>
+    {% for ctg in kategoriyalar %}
+        <li>
+            <a href="{% url 'category' ctg.id %}">
+               <h4>{{ ctg.name }}</h4>
+            </a>
+          
+        </li>
+
+    {% endfor %}
+</ul>
+
+
+{% endblock content %}

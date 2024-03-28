@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+
+
+{% block title %}
+{{ news.title }} 
+{% endblock title %}
+
+
+
+{% block content %}
+<h1>Detail news</h1>
+
+
+<h2>{{ news.title }}</h2>
+<h4>{{ news.subtitle }}</h4>
+<img src="{{ news.image.url }}" alt="image" style="width: 600px; height: 400px;">
+<p>Date: {{ news.created_at }} | Views: {{ news.views }}</p>
+<p>{{ news.body }}</p>
+
+
+<a href="{% url 'update' news.id %}" class="btn btn-primary">Tahrirlash</a>
+<a href="{% url 'delete' news.id %}" class="btn btn-warning">O'chirish</a>
+<a href="{% url 'home' %}" class="btn  btn-secondary" >Ortga</a>
+
+
+
+<hr>
+<br>
+
+<h1> Other News </h1>
+<br>
+
+<div class="card-deck">
+    {% for new in other_news %}
+    <div class="card">
+      <img class="card-img-top" src="{{ new.image.url }}" alt="Card image cap">
+      <div class="card-body">
+        <a href="{{ new.get_absolute_url }}">
+            <h5 class="card-title">{{ new.title }}</h5>
+        </a>
+        <p class="card-text">{{ new.subtitle }}</p>
+        <p class="card-text"><small class="text-muted">Date: {{ new.created_at }} | Views: {{ new.views }}</small></p>
+      </div>
+    </div>
+ {% endfor %}
+  
+  </div>
+<br>
+
+{% endblock content %}

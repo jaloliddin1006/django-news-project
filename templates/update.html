@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+
+
+{% block title %}
+update article
+{% endblock title %}
+
+
+
+{% block content %}
+<h1>Update Article</h1>
+
+
+
+<form method="POST" enctype='multipart/form-data'>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Update" class="btn btn-success">
+    <a href="{% url 'home' %}" class="btn btn-primary" >Ortga</a>
+</form>
+
+{% endblock content %}

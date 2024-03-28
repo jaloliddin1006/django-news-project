@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+
+
+{% block title %}
+create article
+{% endblock title %}
+
+
+
+{% block content %}
+<h1>Create Article</h1>
+
+
+
+<form method="POST" enctype='multipart/form-data'>
+    {% csrf_token %}
+    {{ form.as_p }}
+    
+    <input type="submit" value="Create" class="btn btn-success">
+    <a href="{% url 'home' %}" class="btn btn-primary" >Ortga</a>
+</form>
+
+{% endblock content %}
