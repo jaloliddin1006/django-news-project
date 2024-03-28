@@ -18,7 +18,6 @@ all news
     
 
     {% for yangilik in yangiliklar %}
-
     <div class="card mb-3">
         <img class="card-img-top" src="{{ yangilik.image.url }}" alt="Card image cap" style="height: 400px">
         <div class="card-body">
@@ -30,8 +29,6 @@ all news
         </div>
       </div>
       {% endfor %}
-
-
 </ul>
 
 
@@ -42,11 +39,8 @@ all news
             <a href="{% url 'category' ctg.id %}">
                <h4>{{ ctg.name }}</h4>
             </a>
-          
         </li>
-
     {% endfor %}
 </ul>
-
 
 {% endblock content %}
